@@ -1,0 +1,58 @@
+site_name: "Write Python with AI models even though they are dumb"
+
+nav:
+  - Introduction: index.md
+  - Python Language Features: PythonLanguageFeatures.md
+  - Function Design: FunctionDesign.md
+  - Prompt Engineering: PromptEngineering.md
+  - Problem Decomposition: ProblemDecomposition.md
+  - Resources: Resources.md
+theme: 
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  language: en
+  palette: 
+    - scheme: default
+      primary: custom
+      accent: deep orange
+
+
+markdown_extensions:
+  - tables
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+  - md_in_html
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/travisormsby
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/travis-ormsby/
+
+extra_css:
+  - stylesheets/extra.css
+
+copyright:
+  © 2024 <a href="https://github.com/travisormsby" target"_blank" rel="noopener">Travis Ormsby</a>

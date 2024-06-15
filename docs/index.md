@@ -1,0 +1,13 @@
+# Introduction
+
+Advances in machine learning techniques have resulted in the development of a type of deep learning model called a Large Language Model (LLM). Trained on a massive body of input, LLMs can generate plausible output in a variety of modalities given a prompt. One potential use case of LLMs is in generating Python code for solving geospatial problems. But the current state-of-the-art technology is still not capable of working fully autonomously. While substantial improvements have been made in the recent past, and will likely continue to be made in the future, there is a good chance that these models will always require at least some human intervention in order to output viable code. 
+
+Consequently, the best way to approach these models is not as something that can replace humans, but as an additional tool to help humans work faster and more efficiently. This workshop will introduce the fundamental skills that people will need in order to make effective use of generative AI models. 
+LLMs are very good at some things. They typically create Python code in the appropriate syntax and can correctly summarize chunks of code. This means that when working with an AI code assistant, it is no longer as important to spend time learning the details of Python syntax. But there are some skills that are still important for people to cultivate. These skills include:
+
+* [Recognizing Python language features](PythonLanguageFeatures.md). You need to know enough about the Python language to recognize generally what generated code is doing. 
+* [Function design](FunctionDesign.md). You need to know how to design functions in a way that serves as an effective prompt for the model. 
+* [Prompt engineering](PromptEngineering.md). You need to know how to change prompts to iterate on the model-generated output. 
+* [Problem decomposition](ProblemDecomposition.md). You need to know how to break big problems down into small problems that the model can more easily solve.
+
+The theoretical framework for this workshop is taken from Leo Porter and Daniel Zingaro’s 2023 book *[Learn AI-Assisted Python Programming with GitHub Copilot and ChatGPT](https://www.manning.com/books/learn-ai-assisted-python-programming)*. That book is an excellent reference with additional depth beyond what can be covered here. This workshop will explore the strategies outlined in the book in the specific context of writing Python code to solve geospatial problems. That specific context will be important because, as we will see, LLMs have a poor understanding of GIS workflows. Your domain expertise will be necessary in order to get the most out of working with these models.
