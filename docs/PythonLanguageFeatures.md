@@ -1,7 +1,7 @@
 While you do not need to know everything about Python syntax, you should know enough to recognize the particular language features that generated code is using.
 
 ## Modules
-One of the most important facets of Python is the ecosystem of modules that people have created to solve a diverse array of problems. You can import these modules into your code so that you don’t have to code your own solution. Python’s standard library has many modules for working with the most common types of problems. Other modules need to be downloaded and installed separately. If you have ArcGIS Pro installed, you already have Python environment with about 200 additional modules installed. 
+One of the most important facets of Python is the ecosystem of modules that people have created to solve a diverse array of problems. You can import these modules into your code so that you don’t have to write your own solution. Python’s standard library has many modules for working with the most common types of problems. Other modules need to be downloaded and installed separately. If you have ArcGIS Pro installed, you already have Python environment with about 200 additional modules installed. 
 
 You can import all the functionality of a module with a simple import statement, which will look something like:
 
@@ -15,6 +15,11 @@ You can also import just a part of a module’s functionality by specifying thos
 from arcgis import features
 ```
 
+You can give a module an alias when you import it. Aliases make it easier to refer to a module, and look something like:
+``` py
+import pandas as pd
+```
+
 You should be able to recognize what it means when the model produces code that imports a module. Because the capabilities of a model cannot be used unless the module is imported, you will also need to recognize when the model has created code that makes use of a module, but has not also written the appropriate import statement.
 
 ## Data types
@@ -26,14 +31,14 @@ Different types of values have different capabilities. For example, you can’t 
 | Float      | Any numeric value                                                                                                     | `9.84`, `-1.0`               |
 | Boolean    | Logical values                                                                                                        | `True`, `False`              |
 | String     | A set of characters, generally representing text values. Enclosed in `"` or `'` quotes.                               | `"string"`, `'8'`, `"False"` |
-| List       | Mutable ordered sequence of values. Enclosed in `[]` brackets                                                         | `[1, 2, 3, 4, 5, 6]`         |
-| Tuple      | Immutable ordered sequence of values. Enclosed in `()` parentheses.                                                   | `(1, 2, 3, 4, 5, 6)`         |
+| List       | Mutable (changeable) ordered sequence of values. Enclosed in `[]` brackets                                                         | `[1, 2, 3, 4, 5, 6]`         |
+| Tuple      | Immutable (unchangeable) ordered sequence of values. Enclosed in `()` parentheses.                                                   | `(1, 2, 3, 4, 5, 6)`         |
 | Dictionary | Collection of key: value pairs. Enclosed in `{}` braces. Keys are usually strings or numbers. Values can be anything. | `{"MN": 1, "WI": 2}`         |
 
 Lists, tuples, and dictionaries are containers for other values. Those values could be any other types, even other lists, tuples, or dictionaries. You can easily have a list of dictionaries, where each value in each dictionary is itself another list of dictionaries.
 
 ## Variables
-Some values, like a long list or heavily nested dictionary, are very complex and hard to work with directly. It can be convenient to give values a name and refer to that value by its name instead. These variable names can also imbue a value with meaning for anyone reading the code. A good name can help us understand better what the code is doing. Values are assigned to variable names using the assignment operator (=). For example:
+Some values, like a long list or heavily nested dictionary, are very complex and hard to work with directly. It can be convenient to give values a name and refer to that value by its name instead. These variable names can also imbue a value with meaning for anyone reading the code. A good name can help us understand better what the code is doing. Values are assigned to variable names using the assignment operator `=`. For example:
 
 ``` py linenums="1"
 capital = "Saint Paul"
@@ -45,7 +50,18 @@ is_wisconsin = False
 A block is a chunk of connected code that performs a task. You can recognize a block because the first line will end with a colon (:) and the rest of the block will be indented one level relative to the first line. It is possible to have blocks inside of blocks.
 
 ### Conditional blocks 
-Allow you to deal with branching logic in your code. Conditional statements check the truth value of a statement, and if it is true, execute the code in the rest of the block. You can recognize a conditional by the use of the `if`, `elif` (else if) and `else` keywords. For example:
+Allow you to deal with branching logic in your code. Conditional statements check the truth value of a statement, and if it is true, execute the code in the rest of the block. You can recognize a conditional by the use of the `if`, `elif` (else if) and `else` keywords. Statements typically use the logical operators
+
+| Operator | Meaning |
+| -------- | ------- |
+| `>`      | Greater than
+| `<`      | Less than
+| `==`     | Equal to
+| `>=`     | Greater than or equal to
+| `<=`     | Less than or equal to
+| `!=`     | Not equal to
+
+For example:
 
 ``` py linenums="1"
 if capital == "Saint Paul":
@@ -101,18 +117,31 @@ with open(text_file, 'r') as f:
         print(line)
 ```
 
-This code snippet will open the file located at C:\temp\text.txt and open it. The open file is stored in the `f` variable. It loops through every line in the file and prints out that line.
+This code snippet will open the file located at C:\temp\text.txt and open it for reading. The open file is stored in the `f` variable. It loops through every line in the file and prints out that line.
+
+Python can read text files, but some file types may require additional modules to read them correctly. For example, the `csv` module is helpful for reading csv files as tabular data. 
+
+``` py linenums="1"
+import csv
+csv_file = r'C:\temp\data.csv'
+with open(csv_file, 'r') as f:
+    for row in csv.reader(f):
+        print(row)
+```
+
+This code works similarly to the code above, but reads a row of table values, instead of a line of text.
 
 ## Exercise: Identify programming features
 1.	Navigate to the downloaded materials for this workshop
 2.	Copy the file path for feature_quiz.py
 3.	Open a command line program that can run Python scripts. If you have ArcGIS Pro installed, it will probably be easiest to use a program called Python Command Prompt that you can search for from the Start menu.
-4.	At the command prompt, type python followed by the file path you copied. You may need to put quotes around the path. Ex: python "C:\Users\myuser\dave\feature_quiz.py"
+4.	At the command prompt, type python followed by the file path you copied. You may need to put quotes around the path. For example:
+```
+python "C:\Users\myuser\PythonWithAI\feature_quiz.py"
+```
 5.	Answer the questions about Python features until you either feel confident that you can recognize all the features or you get bored
 6.	Open feature_quiz.py in an editor of your choice (right-clicking on the file should present you with some opens to open it).
 7.	Examine the code in the file. Which features do you recognize? Which features do you not recognize?
 
 ## Have the model summarize code features
 If you have access to an LLM interface, like Copilot or ChatGPT, you can have the model summarize a chunk of code that uses Python features you do not recognize. LLMs tend to be much better at summarizing content than they are at generating it themselves, and the summaries are typically reliable. You can have the model summarize the code it generated for you, or code snippets you have found elsewhere.
-
-

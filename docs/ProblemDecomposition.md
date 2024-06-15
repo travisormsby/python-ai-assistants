@@ -46,7 +46,7 @@ def habitat_conservation(roads, habitats, easements):
     """
 ```
 
-Because the model now knows how to identify highways, buffer those highways, and extract the priority habitats, it can use those functions inside the larger habitat_conservation function that solves the entire task.
+Because the model now knows how to identify highways, buffer those highways, and extract the priority habitats, it can use those functions inside the larger `habitat_conservation` function that solves the entire task.
 
 ## Full function design cycle
 
