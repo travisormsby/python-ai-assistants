@@ -1,4 +1,6 @@
 import random
+from pyscript import document
+from pyweb import pydom
 
 counties = ('Hennepin', 'Ramsey', 'Dakota', 'Washington', 'Anoka', 'Carver', 'Scott', 'Olmsted', 'Winona')
 units = ('millimeter', 'centimeter', 'meter', 'kilometer', 'hectare', 'square_meter')
@@ -119,79 +121,112 @@ def random_open():
     open_mode = random.choice(["'r'", "'w'", "'a'"])
     return f"with open('{random_string()}.{random.choice(['csv', 'txt'])}', {open_mode}) as f:"
     
-default_func_dict = {
-        1: ['numeric data type', random_int_or_float],
-        2: ['boolean data type', random_bool],
-        3: ['string data type', random_string],
-        4: ['list data type', random_list],
-        5: ['tuple data type', random_tuple],
-        6: ['access sequence elements by index', random_index_access],
-        7: ['dictionary data type', random_dict],
-        8: ['variable asignment', random_variable],
-        9: ['conditional', random_conditional],
-        10: ['for loop', random_loop],
-        11: ['function call', random_function_call],
-        12: ['function definition', random_function_def],
-        13: ['import module', random_full_import],
-        14: ['import portion of module', random_from_import],
-        15: ['open file', random_open]
-    }       
+default_func_list = [
+        ['numeric data type', random_int_or_float],
+        ['boolean data type', random_bool],
+        ['string data type', random_string],
+        ['list data type', random_list],
+        ['tuple data type', random_tuple],
+        ['access sequence elements by index', random_index_access],
+        ['dictionary data type', random_dict],
+        ['variable asignment', random_variable],
+        ['conditional', random_conditional],
+        ['loop over elements in sequence', random_loop],
+        ['function call', random_function_call],
+        ['function definition', random_function_def],
+        ['bring a module into your code', random_full_import],
+        ['bring a portion of a module into your code', random_from_import],
+        ['access file', random_open]
+]
 
-def get_answer(q_description, q_func, func_dict):
-    """
-    print the question and answer choices
-    """
-    print("\nWhich Python feature does the following code snippet represent?\n")
-    if q_description == 'string data type':
-        print(repr(q_func()), '\n')
-    else: print(q_func(), '\n')
-    for k, v in func_dict.items():
-        print(f"{k}) {v[0]}")
-    answer = input("Enter the number of the correct answer: ")
-    return answer
+# Purposefully mutating func list default arg
+# Make a copy of the default list to avoid mutating the orginal
+func_list = default_func_list[:]
 
-def welcome():
+def show_question(q_num, q_func):
     """
-    print the welcome message
+    print the question
     """
-    print("Welcome to the Python Feature Quiz!")
-    print("You will be shown a snippet of Python code and you must determine which feature it represents.")
-    print("You will be given a list of features to choose from.")
-    print("Good luck!")
+    question_div = document.querySelector("#question")
+    feature_div = document.querySelector("#feature")
+    button = document.querySelector(".submit")
+    
+    # hold the right answer in the button id
+    button.id = q_num
 
-def continue_play(message):
-    """
-    ask the user if they want to play again
-    """
-    response = input(f"Press enter to {message} or 'q' to quit: ")
-    if response.lower().startswith('q'):
-        return False
-    return True
+    question_div.innerText = "Which Python feature does the following code snippet represent?"
+    if q_func == random_string or q_func == random_bool:
+        feature_div.innerText = repr(q_func())
+    else: 
+        feature_div.innerText = q_func()
 
-def game(func_dict):
+def show_choices(func_list):
+    """
+    show the answer choices
+    """
+    options_div = document.querySelector("#options")
+    options_html = "<ol>"
+    for func in func_list:
+        options_html += f"<li>{func[0]}</li>"
+    options_html += "</ol>"
+    options_div.innerHTML = options_html
+
+def check_answer(event):
+    """
+    check if the answer is correct
+    """
+    answer = document.querySelector(".answer").value
+    correct_answer = event.target.id
+    response_div = document.querySelector("#response")
+    document.querySelector(".answer").value = ""
+    button = document.querySelector(".continue")
+
+    if answer is None or not answer.isnumeric() or answer != correct_answer:
+        button.id = "incorrect"
+        response_div.innerText = f"{answer} is incorrect. The correct answer is: {correct_answer}. Click Continue to keep playing."
+    else:
+        button.id = correct_answer
+        response_div.innerText = (f"{answer} is correct! Click Continue to keep playing.")
+
+def reset_display():
+    answer_input = pydom['.answer'][0]
+    answer_input.style["display"] = 'inline'
+    submit_button = pydom['.submit'][0]
+    submit_button.style["display"] = 'inline'
+    intro_div = pydom['#intro'][0]
+    intro_div.style["display"] = 'none'
+    response_div = document.querySelector('#response')
+    response_div.innerText = ""
+
+def mutate_func_list(event, func_list=func_list):
+    """
+    remove the correct answer from the function list
+    """
+    if event.target.id.isnumeric():
+        if len(func_list) == 0:
+            # reset the func_list
+            func_list = default_func_list[:]
+        
+        func_list.pop(int(event.target.id)-1)
+        
+        if len(func_list) == 0:
+            # reset the func_list
+            func_list = default_func_list[:]
+        
+    return func_list
+
+def game(event, func_list=func_list):
     """
     play the game
     """
-    while True:
-        q_num, [q_description, q_func]  = random.choice(list(func_dict.items()))
-        answer = get_answer(q_description, q_func, func_dict)
-        if answer is None or not answer.isnumeric() or int(answer) != q_num:
-            print(f"Incorrect. The correct answer is: {q_num}) {q_description}")
-        else:
-            print("Correct!")
-            func_dict = {k: v for k, v in func_dict.items() if k != q_num}
-            if not func_dict:
-                print("You've answered all the questions!")
-                if not continue_play("play again"):
-                    break
-                func_dict = default_func_dict
-                continue            
-        if not continue_play("keep playing"):
-            break
-
-if __name__ == '__main__':
-    welcome()
-    if continue_play("start the quiz"):
-        game(default_func_dict)
-    print("Thanks for playing!")
+    reset_display()
+    func_list = mutate_func_list(event)
     
+    q_num = random.randint(1, len(func_list))
+    _, q_func = func_list[q_num-1]
+    
+    show_question(q_num, q_func)
+    show_choices(func_list)
+
+    continue_button = document.querySelector(".continue")
+    continue_button.id = "incorrect"
