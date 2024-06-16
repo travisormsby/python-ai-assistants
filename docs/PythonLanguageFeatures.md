@@ -132,16 +132,10 @@ with open(csv_file, 'r') as f:
 This code works similarly to the code above, but reads a row of table values, instead of a line of text.
 
 ## Exercise: Identify programming features
-1.	Navigate to the downloaded materials for this workshop
-2.	Copy the file path for feature_quiz.py
-3.	Open a command line program that can run Python scripts. If you have ArcGIS Pro installed, it will probably be easiest to use a program called Python Command Prompt that you can search for from the Start menu.
-4.	At the command prompt, type python followed by the file path you copied. You may need to put quotes around the path. For example:
-```
-python "C:\Users\myuser\PythonWithAI\feature_quiz.py"
-```
-5.	Answer the questions about Python features until you either feel confident that you can recognize all the features or you get bored
-6.	Open feature_quiz.py in an editor of your choice (right-clicking on the file should present you with some opens to open it).
-7.	Examine the code in the file. Which features do you recognize? Which features do you not recognize?
+0.	Open the [Python Feature Quiz](https://travisormsby.github.io/feature_quiz/) in a new browser tab.
+0.	Answer the questions about Python features until you either feel confident that you can recognize all the features or you get bored.
+0.	Open the [source code for the quiz](https://github.com/travisormsby/feature_quiz/blob/main/docs/main.py) in a new browser tab.
+0.	Examine the code. Which features do you recognize? Which features do you not recognize?
 
 ## Have the model summarize code features
 If you have access to an LLM interface, like Copilot or ChatGPT, you can have the model summarize a chunk of code that uses Python features you do not recognize. LLMs tend to be much better at summarizing content than they are at generating it themselves, and the summaries are typically reliable. You can have the model summarize the code it generated for you, or code snippets you have found elsewhere.
