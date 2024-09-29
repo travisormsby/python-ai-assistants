@@ -1,3 +1,5 @@
+# Prompt Engineering
+
 Prompt engineering is the official name for “messing around with the function design until the model gives us a result we like”. Effective prompt engineering is a vital skill for working with LLMs, just like using effective keyword terms is a vital skill for working with search engines. You will want to get a feel for what types of function designs are more likely to give you the results you want. And when you get results you don’t like, you want to be able to understand what kinds of changes are likely to work. Developing these intuitions takes practice, and involves as much art as science, but there are some specific prompt engineering strategies you can employ to increase the chances of success.
 
 ## Have the model suggest changes
@@ -74,20 +76,20 @@ Prompt engineering lets you add some specificity to the function design cycle to
 
 ## Exercise: Improve a function
 
-Given this terrible function design:
+Time: 15 minutes
+
+Given this terrible function design for calculating Manhattan distance:
 
 ``` py linenums="1"
 def md(first, second):
-    """
-    Calculate Manhattan distance.
-    """
 ```
 
-0. Improve:
-    0. Function name
-    0. Parameter names
-    0. Doc string description
+0. Improve the function and parameter names
+0. Add a doc string with a description of the function
 0. Add tests to the doc string
+0. Challenge step:
+    0. If you have access to an LLM, prompt the model to generate the function body
+    0. If you do not have access to an LLM, design a second function (including doc string and tests) for calcuating Euclidean distance
 
 ## The role of human code-generating skill
 If you’re already a Python expert, you may wonder what benefit AI code generation has for you. After all, you can already write better code than it can. But using an AI to help generate code means you can write code faster.  Boilerplate code, boring conditional blocks, long dictionary definitions, and other tedious constructs can all be created much faster when the AI writes them for you. That frees you up to focus on higher-level thinking about the code. AI code generation doesn’t mean your expertise is wasted. It just means you engage with the language differently.

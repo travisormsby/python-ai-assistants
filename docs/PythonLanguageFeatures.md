@@ -1,3 +1,5 @@
+# Python Language Features
+
 While you do not need to know everything about Python syntax, you should know enough to recognize the particular language features that generated code is using.
 
 ## Modules
@@ -27,13 +29,13 @@ Different types of values have different capabilities. For example, you can’t 
 
 | Data type  | Description                                                                                                           | Examples                     |
 | ---------- | --------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| Integer    | Whole numbers                                                                                                         | `80`, `-2`                   |
-| Float      | Any numeric value                                                                                                     | `9.84`, `-1.0`               |
-| Boolean    | Logical values                                                                                                        | `True`, `False`              |
-| String     | A set of characters, generally representing text values. Enclosed in `"` or `'` quotes.                               | `"string"`, `'8'`, `"False"` |
-| List       | Mutable (changeable) ordered sequence of values. Enclosed in `[]` brackets                                                         | `[1, 2, 3, 4, 5, 6]`         |
-| Tuple      | Immutable (unchangeable) ordered sequence of values. Enclosed in `()` parentheses.                                                   | `(1, 2, 3, 4, 5, 6)`         |
-| Dictionary | Collection of key: value pairs. Enclosed in `{}` braces. Keys are usually strings or numbers. Values can be anything. | `{"MN": 1, "WI": 2}`         |
+| Integer    | Whole numbers                                                                                                         | `80`, <br>`-2`                   |
+| Float      | Any numeric value                                                                                                     | `9.84`, <br>`-1.0`               |
+| Boolean    | Logical values                                                                                                        | `True`, <br>`False`              |
+| String     | A set of characters, generally representing text values. Enclosed in `"` or `'` quotes.                               | `"string"`, <br>`'8'`, <br>`"False"` |
+| List       | Mutable (changeable) ordered sequence of values. Enclosed in `[]` brackets                                                         | `[1, 2, 3, 4, 5]`         |
+| Tuple      | Immutable (unchangeable) ordered sequence of values. Enclosed in `()` parentheses.                                                   | `(1, 2, 3, 4, 5)`         |
+| Dictionary | Collection of key: value pairs. Enclosed in `{}` braces. Keys are usually strings or numbers. Values can be anything. | `{`<br>`"MN": 1,`<br> `"WI": 2`<br>}       |
 
 Lists, tuples, and dictionaries are containers for other values. Those values could be any other types, even other lists, tuples, or dictionaries. You can easily have a list of dictionaries, where each value in each dictionary is itself another list of dictionaries.
 
@@ -131,11 +133,14 @@ with open(csv_file, 'r') as f:
 
 This code works similarly to the code above, but reads a row of table values, instead of a line of text.
 
-## Exercise: Identify programming features
-0.	Open the [Python Feature Quiz](https://travisormsby.github.io/feature_quiz/) in a new browser tab.
+## Exercise: Identify programming features 
+
+Time: 10 minutes
+
+0.	Open the <a href="https://projects.travisormsby.com/feature_quiz/" target="_blank">Python Feature quiz</a> (Opens in new tab)
 0.	Answer the questions about Python features until you either feel confident that you can recognize all the features or you get bored.
 0.	Open the [source code for the quiz](https://github.com/travisormsby/feature_quiz/blob/main/docs/main.py) in a new browser tab.
 0.	Examine the code. Which features do you recognize? Which features do you not recognize?
 
 ## Have the model summarize code features
-If you have access to an LLM interface, like Copilot or ChatGPT, you can have the model summarize a chunk of code that uses Python features you do not recognize. LLMs tend to be much better at summarizing content than they are at generating it themselves, and the summaries are typically reliable. You can have the model summarize the code it generated for you, or code snippets you have found elsewhere.
+If you have access to an LLM interface, like Copilot or ChatGPT, you can have the model summarize a chunk of code that uses Python features you do not recognize. LLMs tend to be much better at creating reliable summaries than they are at generating original content. You can have the model summarize the code it generated for you, or code snippets you have found elsewhere.

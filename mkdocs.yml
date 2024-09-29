@@ -1,4 +1,4 @@
-site_name: "Write Python with AI models even though they are dumb"
+site_name: "Use AI Models To Write Python Code, Even Though They Are Bad At It  "
 
 nav:
   - Introduction: index.md
@@ -26,7 +26,13 @@ theme:
     - scheme: default
       primary: custom
       accent: deep orange
+  custom_dir: docs/overrides
 
+plugins:
+  - search
+  - print-site:
+      add_cover_page: true
+      cover_page_template: "docs/templates/custom_cover_page.tpl"
 
 markdown_extensions:
   - tables

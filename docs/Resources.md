@@ -1,3 +1,5 @@
+# Resources
+
 If you’re looking for additional information about the topics covered in these pages, you might consult these resources:
 
 * *[Learn AI-Assisted Python Programming with GitHub Copilot and ChatGPT](https://www.manning.com/books/learn-ai-assisted-python-programming)* (manning.com)

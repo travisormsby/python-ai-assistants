@@ -1,3 +1,5 @@
+# Function Design
+
 One way to work effectively with an AI code assistant is to write code that defines and uses functions. As you will see later, that makes it easier to break a large problem into more manageable pieces. Generally, you the human will design the function, and the model will use that design as a prompt to generate code. There are some guidelines you should follow when designing functions so that the model is more likely to generate usable code.
 
 ## Clearly define the task
@@ -62,10 +64,14 @@ The function design cycle is the iterative process of moving from function desig
 </figure>
 
 ## Exercise: Design a function
-0.	In an editor of your choice, write a function signature and doc string
-0.	If you have access to an LLM:
-    0. Prompt the model to generate the function body
-    0. Test the generated code to see the results
-    0. Change the function design and re-prompt if needed
-0.	If you do not have access to an LLM:
-    0. Write additional function signatures and doc strings
+
+Time: 15 minutes
+
+0. In an editor of your choice, write a function signature and doc string
+0. Challenge step:
+    0.	If you have access to an LLM:
+        0. Prompt the model to generate the function body
+        0. Test the generated code to see the results
+        0. Change the function design and re-prompt if needed
+    0.	If you do not have access to an LLM:
+        0. Write additional function signatures and doc strings

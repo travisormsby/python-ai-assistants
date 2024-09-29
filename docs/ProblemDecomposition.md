@@ -1,4 +1,6 @@
-If you give an LLM a big problem and ask for a solution, chances are that it will fail to provide a reasonable response. As you have seen, they perform much better on narrower, more specific tasks. That’s especially true for GIS workflows. Because geospatial problems are a relatively niche topic, LLMs don’t have a robust training set from which they can generate coherent responses to questions about them. The models tend to do things like recommend raster data management tools for vector data. 
+# Problem Decomposition
+
+If you give an LLM a big problem and ask for a solution, chances are that it will fail to provide a reasonable response. As you have seen, they perform much better on narrower, more specific tasks. That’s especially true for GIS workflows. Because geospatial problems are a relatively niche topic, LLMs don’t have a robust training set from which they can generate coherent responses to questions about them. The models are prone to doing silly things like recommend raster data management tools for vector data. 
 
 But sometimes we have a big problem, and we need a sophisticated solution. Fortunately, you can leverage your GIS expertise to help you break down a complex task into pieces small enough for the model to handle. 
 
@@ -65,9 +67,8 @@ Given this too-big function:
 def update_feature_class(csv):
     """
     Given a CSV file of addresses and other attributes, 
-    update the appropriate existing point feature class
-    adding new features as needed.
+    update the appropriate existing point feature class, adding new features as needed.
     """
 ```
 
-Design a few other functions to perform the necessary subtasks
+Replace it with a few other functions that perform the necessary subtasks
